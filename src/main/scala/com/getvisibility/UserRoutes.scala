@@ -1,7 +1,7 @@
 package com.getvisibility
 
-import akka.actor.typed.{ActorRef, ActorSystem}
 import akka.actor.typed.scaladsl.AskPattern._
+import akka.actor.typed.{ActorRef, ActorSystem}
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
@@ -45,9 +45,7 @@ class UserRoutes(userRegistry: ActorRef[UserRegistry.Command])(implicit val syst
       pathEnd {
         concat(
           get {
-            withoutRequestTimeout {
-              complete(getUsers())
-            }
+            complete(getUsers())
           },
           post {
             entity(as[User]) { user =>
