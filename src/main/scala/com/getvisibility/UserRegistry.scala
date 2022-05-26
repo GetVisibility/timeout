@@ -35,7 +35,7 @@ object UserRegistry {
     Behaviors.receiveMessage {
       case GetUsers(replyTo) =>
         replyTo ! {
-          Thread.sleep(10_000);
+          Thread.sleep(90_000);
           Users(users.toSeq)
         }
         Behaviors.same
